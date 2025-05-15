@@ -1,6 +1,8 @@
 import '../css/style.css'
 import { Actor, Engine, Vector, DisplayMode } from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
+import { BadVirus } from './BadVirus.js';
+
 
 export class Game extends Engine {
 
@@ -16,13 +18,10 @@ export class Game extends Engine {
 
     startGame() {
         console.log("start de game!");
-
-        const badVirus = new Actor();
-        badVirus.graphics.use(Resources.BadVirus.toSprite());
-        badVirus.pos = new Vector(500, 300);
-        badVirus.vel = new Vector(-100,0);
-        badVirus.events.on("exitviewport", (e) => this.badVirusLeft(e));
-        this.add(badVirus);
+        for (let i = 0; i < 10; i++) {
+            const badVirus = new BadVirus
+            this.add(badVirus);
+        }
     }
 
     badVirusLeft(e) {
